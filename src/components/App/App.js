@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
 import './App.css';
 
 class App extends Component {
   // Renders the entire app on the DOM
+
+  componentDidMount(){
+    this.props.dispatch({type: 'FETCH_IMAGES'})
+    this.props.dispatch({ type: 'FETCH_TAGS' })
+
+  }
   render() {
     return (
       <div className="App">
@@ -12,4 +19,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapToRedux = (reduxState) => {
+  return{
+    reduxState
+  }
+}
+
+export default connect(mapToRedux)(App);
