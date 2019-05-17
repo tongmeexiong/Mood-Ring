@@ -1,11 +1,10 @@
 const express = require('express')
-const pool = require('../modules/pool')
+const pool = require('../pool')
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    // Get all the owners
 
-    let query = `SELECT * FROM "tags"`
+    const query = `SELECT * FROM "tags"`
     pool.query(query).then(result => {
         res.send(result.rows)
     }).catch(err => {

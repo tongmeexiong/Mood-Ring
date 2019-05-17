@@ -16,7 +16,7 @@
     "redux-saga": "^1.0.2"
   },
   "devDependencies": {
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.19.0"
   },
   "scripts": {
     "start": "node server/server.js",
