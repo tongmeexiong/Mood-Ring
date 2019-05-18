@@ -12,21 +12,21 @@ router.get('/', (req, res) => {
     })
 })
 
-// router.post('/addtag', (req, res) => {
-//     console.log('POST', req.body.img_url);
+router.post('/addtag', (req, res) => {
+    console.log('POST', req.params.id);
 
-//     const sqlQuery = `
-//   INSERT INTO "favorites" ("img_url")
-//   VALUES ($1)`;
+    const sqlQuery = `
+  INSERT INTO "images_tags" ("images_id","tags_id" )
+  VALUES ($1, 2)`;
 
-//     pool.query(sqlQuery, [req.body.img_url])
-//         .then(() => {
-//             res.sendStatus(201);
-//         })
-//         .catch((err) => {
-//             console.log('Error completing SELECT GIF query', err);
-//             res.sendStatus(500);
-//         });
-// });
+    pool.query(sqlQuery, [req.body.id])
+        .then(() => {
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            console.log('Error completing POST query', err);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router

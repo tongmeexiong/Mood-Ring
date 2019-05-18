@@ -16,6 +16,8 @@ import axios from 'axios'
 function* rootSaga() {
 yield takeEvery('FETCH_IMAGES', fetchImages)
 yield takeEvery('FETCH_TAGS', fetchTags)
+yield takeEvery('POST_TAGS_IMAGES', postTagsImages)
+
 }
 
 
@@ -39,10 +41,20 @@ function* fetchTags() {
     }
 }
 
+function* postTagsImages() {
+    try {
+        yield axios.post('/api/images/addtag')
+        // yield put({ type: 'SET_IMAGES', payload: fetchImagesResponse.data })
+    } catch (err) {
+        console.log('Error in fetchImages', err);
+    }
+}
 
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
+
+
 
 // Used to store images returned from the server
 const imagesReducer = (state = [], action) => {
