@@ -5,28 +5,34 @@ class TagSection extends Component {
 
     state = {
         images_id: 0,
-        tags_id: 0,
+        tags_id: 0
     }
 
     handleTagChange = (event) => {
         this.setState({
-            tags_id: event.target.value
+            tags_id: event.target.value,
+            images_id: this.props.imageItem.id
         })
         console.log('TAG ID', event.target.value);
 
     }
 
 
-    applyButtonHandler = (id) => {
-        console.log('Clicked APPLY', id);
-
-
+    applyButtonHandler = () => {
+        // console.log('Clicked APPLY', id);
+        // this.setState({
+        //     tags_id:
+        // })
+        this.props.dispatch({ type: 'POST_TAGS_IMAGES', payload: this.state})
+        
     }
 
 
     render() {
 
-        console.log('TAGSSSS', this.state.tags_id);
+        console.log('TAGSSSS of state', this.state.tags_id);
+        console.log('STATE>>>???', this.state);
+
 
 
         return (
@@ -39,6 +45,8 @@ class TagSection extends Component {
                         )
                     })}
                 </select>
+                <button onClick={this.applyButtonHandler}>APPLY</button>
+
                 {/* {this.props.tags.map(tagItem => {
                     return (
                         <button onClick={this.applyButtonHandler(tagItem.id)}>APPLY</button>
@@ -46,12 +54,14 @@ class TagSection extends Component {
                 })} */}
                 <ul>
                     {this.props.tags.map(tagItem => {
-                        // if (tagItem.id === this.state.tags_id)
+                        if (tagItem.id == this.state.tags_id){
                         return (
-                            
                             <p>{tagItem.name}</p>
-
                         )
+                        } 
+                        // else {
+                        //     return <p>{tagItem.name}</p>
+                        // }
                     })}
                 </ul>
             </div>

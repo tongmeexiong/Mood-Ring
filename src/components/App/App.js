@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import TagSection from '../TagSection/TagSection'
+// import TagSection from '../TagSection/TagSection'
 import ImageDisplay from '../ImagesDisplay/ImagesDisplay'
 import './App.css';
 
@@ -17,7 +17,7 @@ class App extends Component {
       <div className="App">
         <p>Empty Page</p>
         <ImageDisplay />
-        <TagSection />
+        {/* <TagSection /> */}
       </div>
     );
   }

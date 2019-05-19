@@ -12,14 +12,15 @@ router.get('/', (req, res) => {
     })
 })
 
+
 router.post('/addtag', (req, res) => {
-    console.log('POST', req.params.id);
+    console.log('POST', req.body.tags_id);
 
     const sqlQuery = `
-  INSERT INTO "images_tags" ("images_id","tags_id" )
-  VALUES ($1, 2)`;
+  INSERT INTO "images_tags" ("tags_id", "images_id" )
+  VALUES ($1, $2)`;
 
-    pool.query(sqlQuery, [req.body.id])
+    pool.query(sqlQuery, [req.body.tags_id, req.body.images_id])
         .then(() => {
             res.sendStatus(201);
         })

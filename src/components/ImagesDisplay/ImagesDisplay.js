@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import TagSection from '../TagSection/TagSection'
 
 class ImageDisplay extends Component {
 
@@ -15,57 +16,36 @@ class ImageDisplay extends Component {
         if (this.state.currentIndex <= this.props.images.length - 1) {
             return this.setState({
                 currentIndex: 1,
-            })
+            },
+            )
         }
         else {
             return this.setState({
                 currentIndex: this.state.currentIndex - 1,
-            })
+
+            },
+            )
         }
     }
-    
+
 
 
     goToNextSlide = () => {
-        // this.setState ({
-        //     currentIndex: this.state.currentIndex + 1
-        // })
 
         if (this.state.currentIndex >= this.props.images.length) {
             return this.setState({
                 currentIndex: 1,
-            })
+            },
+            )
         }
         else {
             return this.setState({
                 currentIndex: this.state.currentIndex + 1,
-            })
+            },
+            )
         }
+
     }
-    // if (this.state.currentIndex === this.props.images.length - 1) {
-    //     return this.setState({
-    //         currentIndex: 0,
-    //     })
-    // }
-
-    // // This will not run if we met the if condition above
-    // this.setState(prevState => ({
-    //     currentIndex: prevState.currentIndex + 1,
-    // }));
-
-
-
-
-
-
-    // selectById = (id) => {
-    //     this.setState({
-    //         images_id: id
-    //     })
-    //     this.props.dispatch({ type: 'SELECT_BY_ID', payload: this.props.images })
-
-
-    // }
 
 
 
@@ -83,10 +63,13 @@ class ImageDisplay extends Component {
                             return (
                                 <li><button onClick={this.goToPrevSlide}>Previous</button>
                                     <img src={imageItem.path} height="300px" width="300px" />
-                                    <button onClick={this.goToNextSlide}>Next</button></li>
+                                    <button onClick={this.goToNextSlide}>Next</button>
+                                    <TagSection imageItem={imageItem} />
+                                </li>
+
                             )
                         }
-                       
+
                     })}
                 </ul>
             </div>

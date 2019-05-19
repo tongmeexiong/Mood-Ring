@@ -41,15 +41,21 @@ function* fetchTags() {
     }
 }
 
-function* postTagsImages() {
+function* postTagsImages(action) {
+    console.log('POST', action.payload);
+    
     try {
-        yield axios.post('/api/images/addtag')
-        // yield put({ type: 'SET_IMAGES', payload: fetchImagesResponse.data })
+        yield axios.post('/api/images/addtag', action.payload)
+        // yield put({ type: 'SET_IMAGES_TAGS'})
     } catch (err) {
-        console.log('Error in fetchImages', err);
+        console.log('Error in postTagsImages', err);
     }
 }
 
+
+// const tagsStuff ={
+    
+// }
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
@@ -76,11 +82,28 @@ const tagsReducer = (state = [], action) => {
     }
 }
 
+
+const stuff = {
+    images_id: 1
+}
+
+const postReducer = (state = stuff, action) => {
+    switch (action.type) {
+        case 'SET_IMAGES_TAGS':
+                state.images_id = action.payload;
+        default:
+            return state;
+    }
+}
+
+
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         imagesReducer,
         tagsReducer,
+        postReducer
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
