@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+
 
 class TagSection extends Component {
 
@@ -38,22 +41,25 @@ class TagSection extends Component {
 
         return (
             <div>
-                <select value={this.state.tags_id} onChange={this.handleTagChange}>
-                    <option>APPLY TAGS!</option>
+                <Select value={this.state.tags_id} onChange={this.handleTagChange}>
+                    <MenuItem>APPLY TAGS!</MenuItem>
                     {this.props.tags.map(tagItem => {
                         return (
-                            <option value={tagItem.id}>{tagItem.name}</option>
+                            <MenuItem key={tagItem.id} value={tagItem.id}>{tagItem.name}</MenuItem>
                         )
                     })}
-                </select>
+                </Select>
+
+
+
                 <button onClick={this.applyButtonHandler}>APPLY</button>
                 <ul>
                     {this.props.tagsWithImage.map(tagImageItem => {
-                        if (tagImageItem.id === this.state.images_id){
+                        if (tagImageItem.images_id === this.state.images_id){
                         return (
-                            <li>{tagImageItem.name}</li>
+                            <li key={tagImageItem.images_id}>{tagImageItem.name}</li>
                         )
-                        } 
+                        } return console.log('');
                     })}
                 </ul>
             </div>

@@ -4,7 +4,7 @@ const pool = require('../pool')
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    let query = `SELECT "tags"."name", "images"."id" FROM "tags"
+    let query = `SELECT "tags"."name", "images_tags"."images_id" FROM "tags"
     JOIN "images_tags" ON "images_tags"."tags_id" = "tags"."id"
     JOIN "images" ON "images"."id" = "images_tags"."images_id"
     `

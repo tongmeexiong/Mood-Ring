@@ -60,13 +60,14 @@ class ImageDisplay extends Component {
                     {this.props.images.map(imageItem => {
                         if (imageItem.id === this.state.currentIndex) {
                             return (
-                                <li><button onClick={this.goToPrevSlide}>Previous</button>
-                                    <img src={imageItem.path} height="300px" width="300px" />
+                                <li key={imageItem.id}><button onClick={this.goToPrevSlide}>Previous</button>
+                                    <img src={imageItem.path} height="300px" width="300px" alt="moods" />
                                     <button onClick={this.goToNextSlide}>Next</button>
                                     <TagSection imageItem={imageItem} />
                                 </li>
                             )
                         }
+                        return console.log('');
                     })}
                 </ul>
             </div>
