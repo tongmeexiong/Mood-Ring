@@ -58,7 +58,7 @@ function* postTagsImages(action) {
 function* fetchTagsImages(action) {
     try {
         let fetchTagsImagesResponse = yield axios.get('/api/imagestags')
-        yield put({ type: 'SET_IMAGES_TAGS', payload: fetchTagsImagesResponse})
+        yield put({ type: 'SET_IMAGES_TAGS', payload: fetchTagsImagesResponse.data})
     } catch (err) {
         console.log('Error in postTagsImages', err);
     }

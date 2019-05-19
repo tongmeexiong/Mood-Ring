@@ -3,8 +3,12 @@ import { connect } from 'react-redux'
 
 class TagSection extends Component {
 
+    componentDidMount (){
+        this.props.dispatch({ type: 'FETCH_TAGS_IMAGES'})
+    }
+
     state = {
-        images_id: 0,
+        images_id: this.props.imageItem.id,
         tags_id: 0
     }
 
@@ -28,7 +32,7 @@ class TagSection extends Component {
     render() {
 
         console.log('TAGSSSS of state', this.state.tags_id);
-        console.log('STATE>>>???', this.state);
+        console.log('IMAGES_ID', this.state.images_id);
 
 
 
@@ -43,22 +47,13 @@ class TagSection extends Component {
                     })}
                 </select>
                 <button onClick={this.applyButtonHandler}>APPLY</button>
-
-                {/* {this.props.tags.map(tagItem => {
-                    return (
-                        <button onClick={this.applyButtonHandler(tagItem.id)}>APPLY</button>
-                    )
-                })} */}
                 <ul>
-                    {this.props.tags.map(tagItem => {
-                        if (tagItem.id == this.state.tags_id){
+                    {this.props.tagsWithImage.map(tagImageItem => {
+                        if (tagImageItem.id === this.state.images_id){
                         return (
-                            <p>{tagItem.name}</p>
+                            <li>{tagImageItem.name}</li>
                         )
                         } 
-                        // else {
-                        //     return <p>{tagItem.name}</p>
-                        // }
                     })}
                 </ul>
             </div>
@@ -69,7 +64,8 @@ class TagSection extends Component {
 
 const mapToRedux = (reduxState) => {
     return {
-        tags: reduxState.tagsReducer
+        tags: reduxState.tagsReducer,
+        tagsWithImage: reduxState.postReducer
     }
 }
 

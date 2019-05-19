@@ -5,7 +5,6 @@ import TagSection from '../TagSection/TagSection'
 class ImageDisplay extends Component {
 
     state = {
-        // images: this.props.images.path,
         images_id: 0,
         currentIndex: 1
     }
@@ -66,10 +65,8 @@ class ImageDisplay extends Component {
                                     <button onClick={this.goToNextSlide}>Next</button>
                                     <TagSection imageItem={imageItem} />
                                 </li>
-
                             )
                         }
-
                     })}
                 </ul>
             </div>
