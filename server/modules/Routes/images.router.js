@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 
 router.post('/addtag', (req, res) => {
-    console.log('POST', req.body.tags_id);
+    console.log('POST', req.body.tags_id, req.body.images_id);
 
     const sqlQuery = `
   INSERT INTO "images_tags" ("tags_id", "images_id" )

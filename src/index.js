@@ -9,14 +9,15 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
-import {put, takeEvery} from 'redux-saga/effects'
+import { put, takeEvery } from 'redux-saga/effects'
 import axios from 'axios'
 
 // Create the rootSaga generator function
 function* rootSaga() {
-yield takeEvery('FETCH_IMAGES', fetchImages)
-yield takeEvery('FETCH_TAGS', fetchTags)
-yield takeEvery('POST_TAGS_IMAGES', postTagsImages)
+    yield takeEvery('FETCH_IMAGES', fetchImages)
+    yield takeEvery('FETCH_TAGS', fetchTags)
+    yield takeEvery('POST_TAGS_IMAGES', postTagsImages)
+    yield takeEvery('FETCH_TAGS_IMAGES', fetchTagsImages)
 
 }
 
@@ -42,20 +43,29 @@ function* fetchTags() {
 }
 
 function* postTagsImages(action) {
-    console.log('POST', action.payload);
-    
+
     try {
         yield axios.post('/api/images/addtag', action.payload)
-        // yield put({ type: 'SET_IMAGES_TAGS'})
+        console.log('POST TAGS IMAGES', action.payload);
+
+        yield put({ type: 'FETCH_TAGS_IMAGES'})
     } catch (err) {
         console.log('Error in postTagsImages', err);
     }
 }
 
 
-// const tagsStuff ={
-    
-// }
+function* fetchTagsImages(action) {
+    try {
+        let fetchTagsImagesResponse = yield axios.get('/api/imagestags')
+        yield put({ type: 'SET_IMAGES_TAGS', payload: fetchTagsImagesResponse})
+    } catch (err) {
+        console.log('Error in postTagsImages', err);
+    }
+}
+
+
+
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
@@ -83,18 +93,18 @@ const tagsReducer = (state = [], action) => {
 }
 
 
-const stuff = {
-    images_id: 1
-}
 
-const postReducer = (state = stuff, action) => {
+
+const postReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_IMAGES_TAGS':
-                state.images_id = action.payload;
+            return action.payload;
         default:
             return state;
     }
 }
+
+
 
 
 
@@ -112,6 +122,6 @@ const storeInstance = createStore(
 // Pass rootSaga into our sagaMiddleware
 sagaMiddleware.run(rootSaga);
 
-ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, 
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>,
     document.getElementById('root'));
 registerServiceWorker();

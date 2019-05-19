@@ -12,6 +12,7 @@ class TagSection extends Component {
         this.setState({
             tags_id: event.target.value,
             images_id: this.props.imageItem.id
+
         })
         console.log('TAG ID', event.target.value);
 
@@ -21,8 +22,9 @@ class TagSection extends Component {
     applyButtonHandler = () => {
         // console.log('Clicked APPLY', id);
         // this.setState({
-        //     tags_id:
+        //     images_id: this.props.imageItem.id
         // })
+
         this.props.dispatch({ type: 'POST_TAGS_IMAGES', payload: this.state})
         
     }
