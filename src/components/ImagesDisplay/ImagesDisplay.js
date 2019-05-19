@@ -13,9 +13,9 @@ class ImageDisplay extends Component {
 
 
     goToPrevSlide = () => {
-        if (this.state.currentIndex <= this.props.images.length - 1) {
+        if (this.state.currentIndex <= 1) {
             return this.setState({
-                currentIndex: 1,
+                currentIndex: 1
             },
             )
         }

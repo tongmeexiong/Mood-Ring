@@ -20,13 +20,8 @@ class TagSection extends Component {
 
 
     applyButtonHandler = () => {
-        // console.log('Clicked APPLY', id);
-        // this.setState({
-        //     images_id: this.props.imageItem.id
-        // })
-
         this.props.dispatch({ type: 'POST_TAGS_IMAGES', payload: this.state})
-        
+        // this.props.dispatch({ type: 'FETCH_TAGS_IMAGES', payload: this.state })
     }
 
 
