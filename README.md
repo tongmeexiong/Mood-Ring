@@ -1,9 +1,9 @@
-## React Redux Image Carousel! 
+## React Redux Image Carousel!
 
 This is an application that will utilize the fullstack.  More importantly it will use React, Redux & SAGA to build an image carousel from scratch. 
 
 The application will display images on the DOM with a next and previous button. These button will be able to loop through the images we have in the database. There will  be a select drop down that will indicate how a user feels. Once selected the user can apply the feeling and it will display on the DOM. When refreshed the DOM will still show
-The feeling. 
+The feeling. All images and tag data will be utilized from the Database. 
 
 ## Built with:  
 This project will be built with React, Redux, Redux Saga, Material UI, Javascript, Express, Node.js & SQL. 
@@ -17,6 +17,8 @@ You will need to install this before starting:
 
 - Node.js:
 https://nodejs.org/en/
+
+- React, Redux, Redux Saga
 
 - Material UI
 
