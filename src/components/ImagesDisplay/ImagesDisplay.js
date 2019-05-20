@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import TagSection from '../TagSection/TagSection'
+import Button from '@material-ui/core/Button';
+
 
 class ImageDisplay extends Component {
 
@@ -54,12 +56,16 @@ class ImageDisplay extends Component {
                         if (imageItem.id === this.state.currentIndex) {
                             return (
                                 //  Buttons will fire off functions to increment or decrement state. 
-                                <li key={imageItem.id}><button onClick={this.goToPrevSlide}>Previous</button>
-                                    <img src={imageItem.path} height="300px" width="300px" alt="moods" />
-                                    <button onClick={this.goToNextSlide}>Next</button>
+                                <p key={imageItem.id}>
+                                    <img src={imageItem.path} height="350px" width="350px" alt="moods" />
+                                    <div>
+                                    <Button onClick={this.goToPrevSlide} variant="contained" color="secondary" >Previous</Button>
+                                    <Button onClick={this.goToNextSlide} variant="contained" color="primary">Next</Button>
+                                    </div>
                                     {/* Tags are prop over here from the different component */}
+                                    <p> How do you feel about this image?</p>
                                     <TagSection imageItem={imageItem} /> 
-                                </li>
+                                </p>
                             )
                         }
                         return console.log('');

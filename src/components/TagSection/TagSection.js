@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
+
 
 
 class TagSection extends Component {
@@ -49,7 +51,7 @@ class TagSection extends Component {
                     })}
                 </Select>
                     {/*  Button to fire off POST request */}
-                <button onClick={this.applyButtonHandler}>APPLY</button>
+                <Button onClick={this.applyButtonHandler} variant="contained">APPLY</Button>
                 {/* Conditional to only show images that are stored in the local state  */}
                 <ul>
                     {this.props.tagsWithImage.map((tagImageItem, i) => {
