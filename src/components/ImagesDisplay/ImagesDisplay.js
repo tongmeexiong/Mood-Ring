@@ -63,7 +63,7 @@ class ImageDisplay extends Component {
                                     </div>
                                     {/* Tags are prop over here from the different component */}
                                     <ul> How do you feel about this image?</ul>
-                                    <TagSection imageItem={imageItem} /> 
+                                    <li> <TagSection imageItem={imageItem} /> </li>
                                 </ul>
                             )
                         }
