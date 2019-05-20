@@ -50,27 +50,25 @@ class ImageDisplay extends Component {
 
         return (
             <div>
-                <ul>
                     {/* Conditional to only show the images that equals the id number we have in the state */}
                     {this.props.images.map(imageItem => {
                         if (imageItem.id === this.state.currentIndex) {
                             return (
                                 //  Buttons will fire off functions to increment or decrement state. 
-                                <p key={imageItem.id}>
+                                <ul key={imageItem.id}>
                                     <img src={imageItem.path} height="350px" width="350px" alt="moods" />
                                     <div>
                                     <Button onClick={this.goToPrevSlide} variant="contained" color="secondary" >Previous</Button>
                                     <Button onClick={this.goToNextSlide} variant="contained" color="primary">Next</Button>
                                     </div>
                                     {/* Tags are prop over here from the different component */}
-                                    <p> How do you feel about this image?</p>
+                                    <ul> How do you feel about this image?</ul>
                                     <TagSection imageItem={imageItem} /> 
-                                </p>
+                                </ul>
                             )
                         }
                         return console.log('');
                     })}
-                </ul>
             </div>
         )
     }

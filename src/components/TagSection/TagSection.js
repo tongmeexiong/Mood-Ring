@@ -57,7 +57,7 @@ class TagSection extends Component {
                     {this.props.tagsWithImage.map((tagImageItem, i) => {
                         if (tagImageItem.images_id === this.state.images_id){
                         return (
-                            <p key={i}>{tagImageItem.name}</p>
+                            <ul key={i}>{tagImageItem.name}</ul>
                         )
                         } return console.log('');
                     })}
