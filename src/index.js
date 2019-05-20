@@ -12,13 +12,13 @@ import createSagaMiddleware from 'redux-saga';
 import { put, takeEvery } from 'redux-saga/effects'
 import axios from 'axios'
 
-// Create the rootSaga generator function
+
+// Redux Saga for GET and POST requests.
 function* rootSaga() {
     yield takeEvery('FETCH_IMAGES', fetchImages)
     yield takeEvery('FETCH_TAGS', fetchTags)
     yield takeEvery('POST_TAGS_IMAGES', postTagsImages)
     yield takeEvery('FETCH_TAGS_IMAGES', fetchTagsImages)
-
 }
 
 
@@ -42,23 +42,23 @@ function* fetchTags() {
     }
 }
 
+// SAGA to send Image/TAG IDs to Database
 function* postTagsImages(action) {
-
     try {
         yield axios.post('/api/images/addtag', action.payload)
         console.log('POST TAGS IMAGES', action.payload);
 
-        yield put({ type: 'FETCH_TAGS_IMAGES'})
+        yield put({ type: 'FETCH_TAGS_IMAGES' })
     } catch (err) {
         console.log('Error in postTagsImages', err);
     }
 }
 
-
+// SAGA to GET Tags and Name in Junction Table 
 function* fetchTagsImages(action) {
     try {
         let fetchTagsImagesResponse = yield axios.get('/api/imagestags')
-        yield put({ type: 'SET_IMAGES_TAGS', payload: fetchTagsImagesResponse.data})
+        yield put({ type: 'SET_IMAGES_TAGS', payload: fetchTagsImagesResponse.data })
     } catch (err) {
         console.log('Error in postTagsImages', err);
     }
@@ -93,8 +93,7 @@ const tagsReducer = (state = [], action) => {
 }
 
 
-
-
+// Used to store the images tags (e.g. 'Inspirational', 'Calming', 'Energy', etc.) & Image id. 
 const postReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_IMAGES_TAGS':
@@ -103,8 +102,6 @@ const postReducer = (state = [], action) => {
             return state;
     }
 }
-
-
 
 
 

@@ -1,3 +1,6 @@
+
+-- // Database: saga_weekend
+
 CREATE TABLE "images" (
   "id" SERIAL PRIMARY KEY,
   "title" VARCHAR(120) NOT NULL,
@@ -24,3 +27,16 @@ VALUES
 ('Inspirational'),
 ('Frantic'),
 ('Vertigo');
+
+CREATE TABLE "images_tags"
+(
+    "id" SERIAL PRIMARY KEY,
+    "images_id" INT REFERENCES "images",
+    "tags_id" INT REFERENCES "tags"
+); 
+
+SELECT "tags"."name", "images_tags"."images_id"
+FROM "tags"
+    JOIN "images_tags" ON "images_tags"."tags_id" = "tags"."id"
+    JOIN "images" ON "images"."id" = "images_tags"."images_id"
+;
