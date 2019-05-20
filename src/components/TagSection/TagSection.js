@@ -4,7 +4,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 
 
-
 class TagSection extends Component {
 
 // Send GET request to SAGA to hold Tags Name and Image Id in a Reducer. 

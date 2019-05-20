@@ -2,6 +2,7 @@ const express = require('express')
 const pool = require('../pool')
 const router = express.Router();
 
+// Get request to junction table to obtain images. 
 router.get('/', (req, res) => {
     let query = `SELECT * FROM "images"`
     pool.query(query).then(result => {
@@ -12,7 +13,7 @@ router.get('/', (req, res) => {
     })
 })
 
-
+// POST request to send tag name and image id. 
 router.post('/addtag', (req, res) => {
     console.log('POST', req.body.tags_id, req.body.images_id);
 

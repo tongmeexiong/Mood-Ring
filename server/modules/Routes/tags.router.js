@@ -2,6 +2,7 @@ const express = require('express')
 const pool = require('../pool')
 const router = express.Router();
 
+// Get request to junction table to obtain tags name. 
 router.get('/', (req, res) => {
 
     const query = `SELECT * FROM "tags"`

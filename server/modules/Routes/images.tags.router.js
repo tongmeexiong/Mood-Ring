@@ -3,6 +3,7 @@ const express = require('express')
 const pool = require('../pool')
 const router = express.Router();
 
+// Get request to junction table to obtain image id and tags name. 
 router.get('/', (req, res) => {
     let query = `SELECT "tags"."name", "images_tags"."images_id" FROM "tags"
     JOIN "images_tags" ON "images_tags"."tags_id" = "tags"."id"
