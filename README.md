@@ -1,92 +1,55 @@
-# React-Redux with Sagas
+## React Redux Image Carousel! 
 
-> **PLEASE COMMENT YOUR CODE.** Do not clone this repository. Instead, download the zip, extract the contents, `git init`, `git add .`, `git commit -m "initial commit - base project"` and add your remote. Please do this before you leave for the day.
+This is an application that will utilize the fullstack.  More importantly it will use React, Redux & SAGA to build an image carousel from scratch. 
 
-For this weekend challenge you'll be building a mindfulness application: an image carousel tagging app!  
+The application will display images on the DOM with a next and previous button. These button will be able to loop through the images we have in the database. There will  be a select drop down that will indicate how a user feels. Once selected the user can apply the feeling and it will display on the DOM. When refreshed the DOM will still show
+The feeling. 
 
-## Database Setup
+## Built with:  
+This project will be built with React, Redux, Redux Saga, Material UI, Javascript, Express, Node.js & SQL. 
 
-1. Create a database named `saga_weekend`
-2. Run the queries from `database.sql` on the `saga_weekend` database.
-3. You will need to create the junction table between the `images` and `tags` tables! Your app will be populating this new table.
+## Getting Started: 
 
-## Install Dependencies
+**Prerequisites**
+You will need to install this before starting:
 
-1. `npm install`
-2. `npm run server`
-3. `npm run client`
+- PostgreSQL
 
-## Notes
+- Node.js:
+https://nodejs.org/en/
 
-### Tags
-
-We've given you some starter tags in the database. Feel free to change or add some with Postico.
- 
- ### Images
- We've added some abstract images in the `public/images` folder, and the database is set up to use them.
-
- ### Relationships
- Tags can be applied to many different images. Images can have multiple tags. This is Many-to-Many! Junction Table time!
- 
-
-**Do not implement image upload for base mode.**
+- Material UI
 
 
-## Feature List
+**Installing**
+Steps to get the development environment running.
 
-> NOTE: Start by taking inventory of the existing code. Part of the work for setting up sagas has been done for you.
+Download this project.
+npm install
+npm start
+npm run server
+npm run client
 
-## Back-End
+## Completed Features
 
-### Database
-- [x] Create Tag, Image tables 
-- [ ] Create a Junction Table for storing the tags associated with the images
-
-### Routes
-Feel free to make up your own. You may need others beyond these:
-
-- [ ] GET `/api/tags` -- Should return all tags
-- [ ] GET `/api/images` -- Should return all images and the tags associated with each image (JOIN!)
-- [ ] POST `/api/images/addtag` -- Should add a tag associated with an image to your junction table.
-
-
-## Front-End
-
-### Carousel 
-
-** DO NOT USE ANY PREBUILT CAROUSEL NOR CAROUSEL-ISH (MUI STEPPER) THING **
-
-You can build this! Other components from Material-UI are fine.
-
-- [ ] Client-side view that displays a single image at a time, using data from database.
-- [ ] Each image should have an ability to cycle through to the next/previous image. These should always work -- if you hit next on the last picture, it should go to the first image.
-- [ ] With each image, users should be able to assign tags to the current image and save in the database. For base mode, duplicate tags are fine.
-- [ ] Use Sagas for API requests to your server
+- Select Field with feelings tag name
+- Functional next and previous button
+- Images are displayed on the DOM one at a time
+- Project are only made with redux, react and redux saga. 
 
 
-### General Tasks
+## Next Steps
 
-- [ ] Commit your code frequently! You should have at 15+ commits on a project of this size. Use branches to help break down your features.
-- [ ] Comment your code.
-- [ ] Update this README to include a description of the project in your own words.
+- Deploy app on Heroku
+- Add more styling features
+- Add Delete Button 
+- Add input field to add more tag name
 
-## Wireframes
+## Deployment
 
-> NOTE: Feel free to modify the styling and layout of content on the page. 
+Can delploy on heroku:
+https://www.heroku.com/
 
-### Main View
-
-<img src="wireframes/carousel-page.png" width="800">
-
-
-## Stretch Goals
-
-- [ ] Animate it -- Look into transitions -- give us a nice fade in/out, or slide in, or something aesthetically pleasing
-- [ ] Allow users to delete tags from an image.
-- [ ] Give each tag associated to an image a different color
-- [ ] Improve styling on the page using Material UI
-  - [ ] Make it Responsive (Research Grid)
-  - [ ] Give it a theme
-- [ ] Create a view that can pull statistics -- How many images have X tag, for example. Think about the data you can access!
-- [ ] Implement a form to add new tags and/or images
+## Acknowledgments
+A thank you to my instructor Dane from Prime Digital Academy and students in my class,  specifically Maddie Morton  & Bobby Khounphinith. 
 
